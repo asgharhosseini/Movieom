@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favorite"
+    app:startDestination="@id/favoriteFragment">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        tools:layout="@layout/fragment_favorite"
+        android:name="ir.vbile.app.movieom.ui.fragment.favorite.FavoriteFragment"
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        tools:layout="@layout/fragment_detail"
+        android:name="ir.vbile.app.movieom.ui.fragment.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment" />
+    </fragment>
+</navigation>

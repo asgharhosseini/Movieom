@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/play"
+    app:startDestination="@id/playFragment">
+
+    <fragment
+        android:id="@+id/playFragment"
+        tools:layout="@layout/fragment_play"
+        android:name="ir.vbile.app.movieom.ui.fragment.play.PlayFragment"
+        android:label="PlayFragment" >
+        <action
+            android:id="@+id/action_playFragment_to_genreFragment"
+            app:destination="@id/genreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreFragment"
+        tools:layout="@layout/fragment_genre"
+        android:name="ir.vbile.app.movieom.ui.fragment.genre.GenreFragment"
+        android:label="GenreFragment" >
+        <argument
+            android:name="genreId"
+            app:argType="integer" />
+        <argument
+            android:name="genreName"
+            app:argType="string"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_genreFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        tools:layout="@layout/fragment_detail"
+        android:name="ir.vbile.app.movieom.ui.fragment.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+           />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.Toobar">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                style="@style/ThemeOverlay.SearchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:commitIcon="@drawable/ic_search"
+                app:goIcon="@drawable/ic_search"
+                app:iconifiedByDefault="true"
+                app:searchHintIcon="@drawable/ic_search"
+                app:searchIcon="@drawable/ic_search" />
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_fragmentSearch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layoutAnimation="@anim/layout_animation_fall_down"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:spanCount="3"
+        tools:itemCount="11"
+        tools:listitem="@layout/item_home_movies" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/search"
+        app:lottie_speed="0.75"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rv_search_fragmentSearch"
+        app:layout_constraintStart_toStartOf="@+id/rv_search_fragmentSearch"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txt_searchHelper_fragmentSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="8dp"
+        android:text="Enter the title you want to search"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
+        app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
+        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

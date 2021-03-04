@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home"
+        android:name="ir.vbile.app.movieom.ui.fragment.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            />
+        <action
+            android:id="@+id/action_homeFragment_to_genreFragment"
+            app:destination="@id/genreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="ir.vbile.app.movieom.ui.fragment.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_networkFailedFragment"
+            app:destination="@id/networkFailedFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkFailedFragment"
+        tools:layout="@layout/fragment_network_failed"
+        android:name="ir.vbile.app.movieom.ui.fragment.network.NetworkFragment"
+        android:label="NetworkFailedFragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        tools:layout="@layout/fragment_register"
+        android:name="ir.vbile.app.movieom.ui.fragment.auth.RegisterFragment"
+        android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        tools:layout="@layout/fragment_detail"
+        android:name="ir.vbile.app.movieom.ui.fragment.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreFragment"
+        tools:layout="@layout/fragment_genre"
+        android:name="ir.vbile.app.movieom.ui.fragment.genre.GenreFragment"
+        android:label="GenreFragment" >
+        <argument
+            android:name="genreId"
+            app:argType="integer" />
+        <argument
+            android:name="genreName"
+            app:argType="string"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_genreFragment_to_detailFragment"
+            app:destination="@id/detailFragment" >
+        </action>
+    </fragment>
+</navigation>

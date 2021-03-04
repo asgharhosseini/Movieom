@@ -1,0 +1,142 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/farsi</item>
+        <item name="android:textColor">@color/textColor</item>
+<!--        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>-->
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+        <!--        <item name="bottomNavigationStyle">@style/Colored</item>-->
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/farsi</item>
+        <item name="colorAccent">#ffd800</item>
+    </style>
+
+    <style name="EditTextTheme">
+        <!--        <item name="boxBackgroundColor">@color/white</item>-->
+        <!--        <item name="colorControlNormal">@color/cardview_dark_background</item>-->
+        <!--        <item name="colorControlActivated">@color/white</item>-->
+        <!--        <item name="colorControlHighlight">@color/white</item>-->
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorHint">@color/textColorGray</item>
+        <item name="hintTextColor">@color/textColorGray</item>
+        <item name="background">@drawable/edittext_bottom_border</item>
+        <item name="android:textDirection">rtl</item>
+    </style>
+
+    <style name="OtpWidget.OtpView.Style" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+<!--        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>-->
+    </style>
+
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/dialog_bg</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Colored style for Bottom NavigationViews.
+     Use the colored style to get a bottom navigation bar with a colorPrimary background and
+     percentages of colorOnPrimary for the icon and text colors. -->
+<!--    <style name="Colored" parent="Widget.Design.BottomNavigationView">-->
+<!--        <item name="enforceTextAppearance">true</item>-->
+<!--        <item name="enforceMaterialTheme">true</item>-->
+<!--        <item name="android:background">?attr/colorPrimary</item>-->
+<!--        <item name="itemIconTint">@color/mtrl_bottom_nav_colored_item_tint</item>-->
+<!--        <item name="itemRippleColor">@color/mtrl_bottom_nav_colored_ripple_color</item>-->
+<!--        <item name="itemTextAppearanceInactive">?attr/textAppearanceCaption</item>-->
+<!--        <item name="itemTextAppearanceActive">?attr/textAppearanceCaption</item>-->
+<!--        <item name="itemTextColor">@color/mtrl_bottom_nav_colored_item_tint</item>-->
+<!--    </style>-->
+
+
+    <style name="AlertDialogTheme">
+        <item name="shapeAppearanceMediumComponent">@style/RoundShapeAppearance</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Alert.Button.Neutral</item>
+        <item name="fontFamily">@font/iransans_bold</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Alert.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="RoundShapeTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="shapeAppearanceMediumComponent">@style/RoundShapeAppearance</item>
+    </style>
+
+    <style name="RoundShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+
+
+    <style name="ThemeOverlay.Toobar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <!-- Text color -->
+        <item name="android:editTextColor">@color/white</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.SearchView" parent="">
+        <!-- Text color -->
+        <item name="android:editTextColor">@color/white</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+    <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="searchViewStyle">@style/Widget.AppCompat.SearchView.ActionBar</item>
+    </style>
+</resources>

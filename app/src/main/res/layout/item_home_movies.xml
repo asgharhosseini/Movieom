@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginVertical="4dp"
+    android:layout_marginHorizontal="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingVertical="4dp">
+
+
+    <ImageView
+        android:id="@+id/image3"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.2"
+        android:maxWidth="100dp"
+        android:maxHeight="140dp"
+        android:minWidth="100dp"
+        android:minHeight="140dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tt0111161_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="12dp"
+        android:alpha="0.4"
+        android:maxWidth="100dp"
+        android:maxHeight="140dp"
+        android:minWidth="100dp"
+        android:minHeight="140dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tt0111161_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="MissingConstraints" />
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:maxWidth="100dp"
+        android:maxHeight="140dp"
+        android:minWidth="100dp"
+        android:minHeight="140dp"
+        android:scaleType="centerCrop"
+        android:transitionName="image"
+        android:src="@drawable/tt0111161_poster"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

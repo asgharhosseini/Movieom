@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Movieom</string>
+    <string name="menu_menu">menu</string>
+    <string name="menu_search">search</string>
+    <string name="menu_favorite">favorite</string>
+    <string name="menu_play">play</string>
+    <string name="menu_home">home</string>
+    <string name="action_settings">settings</string>
+    <string name="app_desc">راهکار های فنی و مهندسی ویبایل</string>
+    <string name="app_site">www.vbile.ir</string>
+    <string name="version_code">نسخه ۱.۰.۰</string>
+    <string name="moviom">MOVIOM</string>
+    <string name="imdb">IMDb</string>
 </resources>
