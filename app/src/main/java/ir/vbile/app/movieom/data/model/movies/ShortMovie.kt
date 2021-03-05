@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @SuppressLint("ParcelCreator")
 @Parcelize
-data class Data(
+data class ShortMovie(
     @SerializedName("country")
     var country: String,
     @SerializedName("genres")

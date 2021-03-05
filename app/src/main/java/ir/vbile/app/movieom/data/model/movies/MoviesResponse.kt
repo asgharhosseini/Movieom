@@ -9,8 +9,8 @@ import kotlinx.android.parcel.Parcelize
 @SuppressLint("ParcelCreator")
 @Parcelize
 data class MoviesResponse(
-    @SerializedName("data")
-    var data: List<Data>,
-    @SerializedName("metadata")
+        @SerializedName("data")
+    var data: List<ShortMovie>,
+        @SerializedName("metadata")
     var metadata: Metadata
 ) : Parcelable
