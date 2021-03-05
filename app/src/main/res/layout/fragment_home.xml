@@ -64,7 +64,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:layoutAnimation="@anim/layout_animation_slide_right"
+
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="@+id/mViewPager"
                 app:layout_constraintHorizontal_bias="1.0"
