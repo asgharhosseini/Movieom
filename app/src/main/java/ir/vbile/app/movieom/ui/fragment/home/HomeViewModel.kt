@@ -7,8 +7,8 @@ import ir.vbile.app.movieom.data.model.genre.*
 import ir.vbile.app.movieom.data.model.movies.*
 import ir.vbile.app.movieom.data.repositories.*
 import ir.vbile.app.movieom.other.*
+import ir.vbile.app.movieom.ui.base.*
 import kotlinx.coroutines.*
-import retrofit2.*
 import java.io.*
 import kotlin.random.*
 
@@ -63,56 +63,23 @@ class HomeViewModel @ViewModelInject constructor(private val movieRepository: Mo
         try {
 
             val responseBanner = movieRepository.getGenresMovies(genreId)
-            handleResponse(responseBanner,responseGetter)
+            handleResponse(responseBanner, responseGetter)
 
-        }catch (t:Throwable){
-            when(t){
-                is IOException->responseGetter.postValue(Resource.Error("Network Failure",null,404))
-                else->responseGetter.postValue(Resource.Error("Conversion Error",null,404))
-            }
-
-        }
-        _genresMoviesCenter.postValue(Resource.Loading())
-
-        try {
-
-            val responseCenter = movieRepository.getGenresMovies(genreIdCenter)
-            handleResponse(responseCenter,_genresMoviesCenter)
-
-
-        }catch (t:Throwable){
-            when(t){
-                is IOException->_genresMoviesCenter.postValue(Resource.Error("Network Failure",null,404))
-                else->_genresMoviesCenter.postValue(Resource.Error("Conversion Error",null,404))
-            }
-
-        }
-        _genresMoviesDown.postValue(Resource.Loading())
-        try {
-
-
-            val responseDown = movieRepository.getGenresMovies(genreIdDown)
-            handleResponse(responseDown,_genresMoviesDown)
-
-        }catch (t:Throwable){
-            when(t){
-                is IOException->_genresMoviesDown.postValue(Resource.Error("Network Failure",null,404))
-                else->_genresMoviesDown.postValue(Resource.Error("Conversion Error",null,404))
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> responseGetter.postValue(Resource.Error("Network Failure", null, 404))
+                else -> responseGetter.postValue(Resource.Error("Conversion Error", null, 404))
             }
 
         }
     }
 
+    fun getGenresMovies(genreIdBanner: Int, genreIdTop: Int, genreIdCenter: Int, genreIdDown: Int) = viewModelScope.launch {
 
-
-    fun<T> handleResponse(response:Response<T>,data:MutableLiveData<Resource<T>>){
-        if (response.isSuccessful) {
-            response.body()?.let { resultResponse ->
-                data.postValue( Resource.Success( resultResponse))
-            }
-        }else{
-            data.postValue(Resource.Error(response.message(),null,response.code()))
-        }
+        handlerGetResponse(_genresMoviesBanner, genreIdBanner)
+        handlerGetResponse(_genresMoviesTop, genreIdTop)
+        handlerGetResponse(_genresMoviesCenter, genreIdCenter)
+        handlerGetResponse(_genresMoviesDown, genreIdDown)
     }
 
 
