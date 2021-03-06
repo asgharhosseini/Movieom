@@ -58,66 +58,27 @@ class HomeViewModel @ViewModelInject constructor(private val movieRepository: Mo
     }
 
 
+    suspend fun handlerGetResponse(responseGetter: MutableLiveData<Resource<MoviesResponse>>, genreId:Int) {
+        responseGetter.postValue(Resource.Loading())
+        try {
+
+            val responseBanner = movieRepository.getGenresMovies(genreId)
+            handleResponse(responseBanner,responseGetter)
+
+        }catch (t:Throwable){
+            when(t){
+                is IOException->responseGetter.postValue(Resource.Error("Network Failure",null,404))
+                else->responseGetter.postValue(Resource.Error("Conversion Error",null,404))
+            }
+
+        }
+    }
     fun getGenresMovies(genreIdBanner: Int,genreIdTop: Int,genreIdCenter: Int,genreIdDown: Int)=viewModelScope.launch {
-        _genresMoviesBanner.postValue(Resource.Loading())
 
-
-        try {
-
-            val responseBanner = movieRepository.getGenresMovies(genreIdBanner)
-            handleResponse(responseBanner,_genresMoviesBanner)
-
-        }catch (t:Throwable){
-            when(t){
-                is IOException->_genresMoviesBanner.postValue(Resource.Error("Network Failure",null,404))
-                else->_genresMoviesBanner.postValue(Resource.Error("Conversion Error",null,404))
-            }
-
-        }
-        _genresMoviesTop.postValue(Resource.Loading())
-
-
-        try {
-
-            val responseTop = movieRepository.getGenresMovies(genreIdTop)
-            handleResponse(responseTop,_genresMoviesTop)
-
-        }catch (t:Throwable){
-            when(t){
-                is IOException->_genresMoviesTop.postValue(Resource.Error("Network Failure",null,404))
-                else->_genresMoviesTop.postValue(Resource.Error("Conversion Error",null,404))
-            }
-
-        }
-        _genresMoviesCenter.postValue(Resource.Loading())
-
-        try {
-
-            val responseCenter = movieRepository.getGenresMovies(genreIdCenter)
-            handleResponse(responseCenter,_genresMoviesCenter)
-
-
-        }catch (t:Throwable){
-            when(t){
-                is IOException->_genresMoviesCenter.postValue(Resource.Error("Network Failure",null,404))
-                else->_genresMoviesCenter.postValue(Resource.Error("Conversion Error",null,404))
-            }
-
-        }
-        _genresMoviesDown.postValue(Resource.Loading())
-        try {
-
-
-            val responseDown = movieRepository.getGenresMovies(genreIdDown)
-            handleResponse(responseDown,_genresMoviesDown)
-
-        }catch (t:Throwable){
-            when(t){
-                is IOException->_genresMoviesDown.postValue(Resource.Error("Network Failure",null,404))
-                else->_genresMoviesDown.postValue(Resource.Error("Conversion Error",null,404))
-            }
-
-        }
+        handlerGetResponse(_genresMoviesBanner,genreIdBanner)
+        handlerGetResponse(_genresMoviesTop,genreIdTop)
+        handlerGetResponse(_genresMoviesCenter,genreIdCenter)
+        handlerGetResponse(_genresMoviesDown,genreIdDown)
     }
 
 
