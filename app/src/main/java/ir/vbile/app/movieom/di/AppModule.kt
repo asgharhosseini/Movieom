@@ -11,10 +11,8 @@ import dagger.hilt.*
 import dagger.hilt.android.qualifiers.*
 import dagger.hilt.components.*
 import ir.vbile.app.movieom.R
-import ir.vbile.app.movieom.data.model.movies.*
 import ir.vbile.app.movieom.data.network.*
 import ir.vbile.app.movieom.data.repositories.*
-import ir.vbile.app.movieom.other.*
 import ir.vbile.app.movieom.ui.adapter.*
 import retrofit2.*
 import retrofit2.converter.gson.*
@@ -61,7 +59,8 @@ object AppModule {
     @Provides
     fun provideMovieAdapter(glide: RequestManager) = MoviesAdapter(glide)
 
-
+    @Provides
+    fun provideGenreMovieAdapter(glide: RequestManager) = GenreMoviesAdapter(glide)
 
 
 }
