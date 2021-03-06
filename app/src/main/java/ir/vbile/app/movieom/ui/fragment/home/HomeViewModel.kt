@@ -13,17 +13,17 @@ import java.io.*
 import kotlin.random.*
 
 
-class HomeViewModel @ViewModelInject constructor(private val movieRepository: MovieRepository):ViewModel() {
+class HomeViewModel @ViewModelInject constructor(private val movieRepository: MovieRepository) : BaseViewModel() {
     var banner = Random.nextInt(1, 21)
     var top = Random.nextInt(1, 21)
     var center = Random.nextInt(1, 21)
     var down = Random.nextInt(1, 21)
 
 
-    private val _genre=MutableLiveData<Resource<List<Genre>>>()
-    val genre: LiveData<Resource<List<Genre>>> =_genre
+    private val _genre = MutableLiveData<Resource<List<Genre>>>()
+    val genre: LiveData<Resource<List<Genre>>> = _genre
 
-    private val _genresMoviesTop=MutableLiveData<Resource<MoviesResponse>>()
+    private val _genresMoviesTop = MutableLiveData<Resource<MoviesResponse>>()
     val genresMoviesTop: LiveData<Resource<MoviesResponse>> =_genresMoviesTop
 
     private val _genresMoviesCenter=MutableLiveData<Resource<MoviesResponse>>()
@@ -72,13 +72,35 @@ class HomeViewModel @ViewModelInject constructor(private val movieRepository: Mo
             }
 
         }
-    }
-    fun getGenresMovies(genreIdBanner: Int,genreIdTop: Int,genreIdCenter: Int,genreIdDown: Int)=viewModelScope.launch {
+        _genresMoviesCenter.postValue(Resource.Loading())
 
-        handlerGetResponse(_genresMoviesBanner,genreIdBanner)
-        handlerGetResponse(_genresMoviesTop,genreIdTop)
-        handlerGetResponse(_genresMoviesCenter,genreIdCenter)
-        handlerGetResponse(_genresMoviesDown,genreIdDown)
+        try {
+
+            val responseCenter = movieRepository.getGenresMovies(genreIdCenter)
+            handleResponse(responseCenter,_genresMoviesCenter)
+
+
+        }catch (t:Throwable){
+            when(t){
+                is IOException->_genresMoviesCenter.postValue(Resource.Error("Network Failure",null,404))
+                else->_genresMoviesCenter.postValue(Resource.Error("Conversion Error",null,404))
+            }
+
+        }
+        _genresMoviesDown.postValue(Resource.Loading())
+        try {
+
+
+            val responseDown = movieRepository.getGenresMovies(genreIdDown)
+            handleResponse(responseDown,_genresMoviesDown)
+
+        }catch (t:Throwable){
+            when(t){
+                is IOException->_genresMoviesDown.postValue(Resource.Error("Network Failure",null,404))
+                else->_genresMoviesDown.postValue(Resource.Error("Conversion Error",null,404))
+            }
+
+        }
     }
 
 
