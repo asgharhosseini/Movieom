@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         // Now that BottomNavigationBar has restored its instance state
         // and its selectedItemId, we can proceed with setting up the
         // BottomNavigationBar with Navigation
-        setupBottomNavigationBar()
+       // setupBottomNavigationBar()
     }
 
     /**
