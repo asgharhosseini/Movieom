@@ -7,23 +7,23 @@ import ir.vbile.app.movieom.data.model.genre.*
 import ir.vbile.app.movieom.data.model.movies.*
 import ir.vbile.app.movieom.data.repositories.*
 import ir.vbile.app.movieom.other.*
+import ir.vbile.app.movieom.ui.base.*
 import kotlinx.coroutines.*
-import retrofit2.*
 import java.io.*
 import kotlin.random.*
 
 
-class HomeViewModel @ViewModelInject constructor(private val movieRepository: MovieRepository):ViewModel() {
+class HomeViewModel @ViewModelInject constructor(private val movieRepository: MovieRepository) : BaseViewModel() {
     var banner = Random.nextInt(1, 21)
     var top = Random.nextInt(1, 21)
     var center = Random.nextInt(1, 21)
     var down = Random.nextInt(1, 21)
 
 
-    private val _genre=MutableLiveData<Resource<List<Genre>>>()
-    val genre: LiveData<Resource<List<Genre>>> =_genre
+    private val _genre = MutableLiveData<Resource<List<Genre>>>()
+    val genre: LiveData<Resource<List<Genre>>> = _genre
 
-    private val _genresMoviesTop=MutableLiveData<Resource<MoviesResponse>>()
+    private val _genresMoviesTop = MutableLiveData<Resource<MoviesResponse>>()
     val genresMoviesTop: LiveData<Resource<MoviesResponse>> =_genresMoviesTop
 
     private val _genresMoviesCenter=MutableLiveData<Resource<MoviesResponse>>()
@@ -79,18 +79,6 @@ class HomeViewModel @ViewModelInject constructor(private val movieRepository: Mo
         handlerGetResponse(_genresMoviesTop,genreIdTop)
         handlerGetResponse(_genresMoviesCenter,genreIdCenter)
         handlerGetResponse(_genresMoviesDown,genreIdDown)
-    }
-
-
-
-    fun<T> handleResponse(response:Response<T>,data:MutableLiveData<Resource<T>>){
-        if (response.isSuccessful) {
-            response.body()?.let { resultResponse ->
-                data.postValue( Resource.Success( resultResponse))
-            }
-        }else{
-            data.postValue(Resource.Error(response.message(),null,response.code()))
-        }
     }
 
 
