@@ -28,16 +28,19 @@ class HomeFragment:Fragment(R.layout.fragment_home) {
 
     private val vm by viewModels<HomeViewModel>()
 
-    private lateinit var genresAdapter: GenreAdapter
+    @Inject
+    lateinit var genresAdapter: GenreAdapter
 
     @Inject
-     lateinit var moviesTopAdapter: MoviesAdapter
-    @Inject
-     lateinit var moviesCenterAdapter: MoviesAdapter
-    @Inject
-     lateinit var moviesDownAdapter: MoviesAdapter
+    lateinit var moviesTopAdapter: MoviesAdapter
 
-     lateinit var bannerAdapter: BannerAdapter
+    @Inject
+    lateinit var moviesCenterAdapter: MoviesAdapter
+
+    @Inject
+    lateinit var moviesDownAdapter: MoviesAdapter
+
+    lateinit var bannerAdapter: BannerAdapter
 
 
 
@@ -112,8 +115,7 @@ class HomeFragment:Fragment(R.layout.fragment_home) {
     private fun setupRecyclerView() {
         val resId = R.anim.layout_animation_slide_right
         val animation = AnimationUtils.loadLayoutAnimation(context, resId)
-        genresAdapter= GenreAdapter()
-        //moviesTopAdapter= MoviesAdapter()
+
         rv_genres_fragmentHome.apply {
             adapter = genresAdapter
             if (!animationFlag) {
