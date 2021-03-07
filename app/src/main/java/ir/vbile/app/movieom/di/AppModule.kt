@@ -65,5 +65,8 @@ object AppModule {
     @Provides
     fun provideGenrePlayAdapter() = GenresPlayAdapter()
 
+    @Provides
+    fun provideGenreAdapter() = GenreAdapter()
+
 
 }
