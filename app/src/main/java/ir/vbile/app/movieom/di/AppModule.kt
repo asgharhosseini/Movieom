@@ -68,5 +68,8 @@ object AppModule {
     @Provides
     fun provideGenreAdapter() = GenreAdapter()
 
+    @Provides
+    fun provideGalleryImageAdapter(glide: RequestManager) = GalleryImageAdapter(glide)
+
 
 }
