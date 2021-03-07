@@ -5,7 +5,7 @@ import android.util.*
 import android.view.*
 import android.view.animation.*
 import androidx.fragment.app.*
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
 import androidx.navigation.fragment.*
 import androidx.recyclerview.widget.*
 import androidx.viewpager2.widget.*
@@ -13,7 +13,8 @@ import com.google.android.material.snackbar.*
 import com.zhpan.bannerview.constants.*
 import com.zhpan.bannerview.utils.*
 import com.zhpan.indicator.enums.*
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.*
+import ir.vbile.app.movieom.*
 import ir.vbile.app.movieom.R
 import ir.vbile.app.movieom.data.model.movies.*
 import ir.vbile.app.movieom.other.*
@@ -21,7 +22,6 @@ import ir.vbile.app.movieom.other.Constance.Companion.TAG
 import ir.vbile.app.movieom.ui.adapter.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.*
-import kotlin.random.*
 
 @AndroidEntryPoint
 class HomeFragment:Fragment(R.layout.fragment_home) {
@@ -47,6 +47,7 @@ class HomeFragment:Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).showBottomNav()
         subscribeToObservers()
         setupRecyclerView()
         setupView()
