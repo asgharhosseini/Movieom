@@ -31,4 +31,15 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Movie
     }
 
 
+    fun addFavoriteMovie(movie: MovieInDb) = viewModelScope.launch {
+        repository.insertMovies(movie)
+    }
+
+    fun deleteItem(movieId: Int) = viewModelScope.launch {
+        repository.deleteItem(movieId)
+    }
+
+    fun checkMovieIsFavorite(movieId: Int): LiveData<Boolean> = repository.checkMovieIsFavorite(movieId)
+
+
 }
