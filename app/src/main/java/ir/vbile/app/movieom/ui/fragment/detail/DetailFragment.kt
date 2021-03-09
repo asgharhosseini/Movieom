@@ -64,27 +64,13 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     )
             findNavController().navigate(action)
         }
-        /*
-            if (vm.checkMovieIsFavorite(arg.movieId)) {
-            flg = true
-            iv_removeFavorite.visibility = View.VISIBLE
-        }
-        else {
-            flg = false
-            iv_addFavorite.visibility = View.VISIBLE
-        }
+
         iv_removeFavorite.setOnClickListener {
-            compositeDisposable.add(
-                vm.deleteItem(arg.movieId)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            )
+            vm.deleteItem(arg.movieId)
             iv_addFavorite.visibility = View.VISIBLE
             iv_removeFavorite.visibility = View.GONE
         }
-        * */
-
+        checkMovieIsFavorite()
     }
 
 
@@ -218,18 +204,12 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                                 writer = builderWriter.toString(),
                                 year = movie.year
                         )
-/*
-                            iv_addFavorite.setOnClickListener {
-                                compositeDisposable.add(
-                                        vm.addFavoriteMovie(movieInDb)
-                                                .subscribeOn(Schedulers.newThread())
-                                                .observeOn(AndroidSchedulers.mainThread())
-                                                .subscribe()
-                                )
-                                iv_addFavorite.visibility = View.GONE
-                                iv_removeFavorite.visibility = View.VISIBLE
-                            }
-*/
+
+                        iv_addFavorite.setOnClickListener {
+                            vm.addFavoriteMovie(movieInDb)
+                            iv_addFavorite.visibility = View.GONE
+                            iv_removeFavorite.visibility = View.VISIBLE
+                        }
 
 
                     }
@@ -270,6 +250,20 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 }
             }
         })
+    }
+
+    fun checkMovieIsFavorite() {
+        vm.checkMovieIsFavorite(arg.movieId).observe(viewLifecycleOwner, Observer {
+            if (it) {
+                flg = true
+                iv_removeFavorite.visibility = View.VISIBLE
+            } else {
+                flg = false
+                iv_addFavorite.visibility = View.VISIBLE
+            }
+        })
+
+
     }
 
     private fun hideProgressBar() {
