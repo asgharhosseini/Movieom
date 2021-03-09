@@ -1,13 +1,12 @@
 package ir.vbile.app.movieom.data.repositories
 
-import ir.vbile.app.movieom.data.model.genre.Genre
-import ir.vbile.app.movieom.data.model.movie.Movie
-import ir.vbile.app.movieom.data.model.movies.MoviesResponse
-import ir.vbile.app.movieom.other.*
-import retrofit2.Response
+import ir.vbile.app.movieom.data.model.genre.*
+import ir.vbile.app.movieom.data.model.movie.*
+import ir.vbile.app.movieom.data.model.movies.*
+import retrofit2.*
 
-interface DataRepository {
- suspend  fun getGenres(): Response<List<Genre>>
+interface NetworkRepository {
+    suspend fun getGenres(): Response<List<Genre>>
     suspend fun getGenresMovies(id: Int): Response<MoviesResponse>
     suspend fun getMovie(id: Int): Response<Movie>
     suspend fun getSearchMovies(name: String): Response<MoviesResponse>
