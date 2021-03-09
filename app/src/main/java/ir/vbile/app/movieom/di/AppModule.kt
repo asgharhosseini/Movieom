@@ -1,6 +1,7 @@
 package ir.vbile.app.movieom.di
 
 import android.content.*
+import androidx.room.*
 import com.bumptech.glide.*
 import com.bumptech.glide.load.engine.*
 import com.bumptech.glide.load.resource.bitmap.*
@@ -11,6 +12,7 @@ import dagger.hilt.*
 import dagger.hilt.android.qualifiers.*
 import dagger.hilt.components.*
 import ir.vbile.app.movieom.R
+import ir.vbile.app.movieom.data.database.*
 import ir.vbile.app.movieom.data.network.*
 import ir.vbile.app.movieom.data.repositories.*
 import ir.vbile.app.movieom.ui.adapter.*
@@ -37,7 +39,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideMovieRepository(apiService: ApiService)=MovieRepository(apiService)
+    fun provideMovieRepository(apiService: ApiService, database: MoviesDao) = MovieRepository(apiService, database)
 
 
     @Provides
@@ -71,5 +73,20 @@ object AppModule {
     @Provides
     fun provideGalleryImageAdapter(glide: RequestManager) = GalleryImageAdapter(glide)
 
+    @Provides
+    fun provideMoviesDao(appDatabase: AppDatabase): MoviesDao {
+        return appDatabase.moviesDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        return Room.databaseBuilder(
+                appContext,
+                AppDatabase::class.java,
+                "favorite_user"
+        ).allowMainThreadQueries()
+                .build()
+    }
 
 }
