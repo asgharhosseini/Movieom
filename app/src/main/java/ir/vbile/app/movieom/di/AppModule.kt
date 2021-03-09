@@ -65,6 +65,9 @@ object AppModule {
     fun provideGenreMovieAdapter(glide: RequestManager) = GenreMoviesAdapter(glide)
 
     @Provides
+    fun provideGenreMoviesAdapter(glide: RequestManager) = FavoriteMoviesAdapter(glide)
+
+    @Provides
     fun provideGenrePlayAdapter() = GenresPlayAdapter()
 
     @Provides
